@@ -6,15 +6,20 @@ export default function HouseEdit() {
         <div className="row">
           {/* Logo */}
           <div className="col align-self-center">
-            <img src="images/logo-airbnb.png" className="w-25" />
+            <img src="./images/logo-airbnb.png" className="w-25" />
           </div>
           {/* Buttons / Links */}
           <div className="col text-end">
             <a className="btn btn-outline-secondary">
-              <img src="https://randomuser.me/api/portraits/men/11.jpg" id="avatar-login" />
+              <img
+                src="https://randomuser.me/api/portraits/men/11.jpg"
+                id="avatar-login"
+              />
               <span>Name</span>
             </a>
-            <a type="button" className="btn btn-outline-secondary">Login</a>
+            <a type="button" className="btn btn-outline-secondary">
+              Login
+            </a>
           </div>
         </div>
       </div>
@@ -40,7 +45,9 @@ export default function HouseEdit() {
           <div className="mb-3">
             <label className="form-label">Location</label>
             <select className="form-select">
-              <option selected value="1">Koh Phangan</option>
+              <option selected value="1">
+                Koh Phangan
+              </option>
               <option value="2">Koh Samui</option>
               <option value="3">Bali</option>
             </select>
@@ -58,20 +65,60 @@ export default function HouseEdit() {
           {/* Add Photos */}
           <div className="mb-3">
             <label className="form-label">Add Photos (up to 9)</label>
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
-            <input type="text" className="form-control mb-2" placeholder="http://..." />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="http://..."
+            />
           </div>
           {/* Button Submit */}
           <div className="mb-5">
-            <button type="button" className="btn btn-success">Save Changes</button>
-            <button type="button" className="btn btn-danger">Delete Houses</button>
+            <button type="button" className="btn btn-success">
+              Save Changes
+            </button>
+            <button type="button" className="btn btn-danger m-2">
+              Delete Houses
+            </button>
           </div>
         </div>
       </form>

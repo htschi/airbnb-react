@@ -11,10 +11,15 @@ export default function Profile() {
           {/* Buttons / Links */}
           <div className="col text-end">
             <a className="btn btn-outline-secondary">
-              <img src="https://randomuser.me/api/portraits/men/11.jpg" id="avatar-login" />
+              <img
+                src="https://randomuser.me/api/portraits/men/11.jpg"
+                id="avatar-login"
+              />
               <span>Name</span>
             </a>
-            <a type="button" className="btn btn-outline-secondary">Login</a>
+            <a type="button" className="btn btn-outline-secondary">
+              Login
+            </a>
           </div>
         </div>
       </div>
@@ -36,70 +41,120 @@ export default function Profile() {
             <div className="col-3">
               <div className="mb-3">
                 <label className="form-label">Name</label>
-                <input type="email" className="form-control" placeholder="Firstname Lastname" />
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Firstname Lastname"
+                />
               </div>
               <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <input type="email" className="form-control" placeholder="name@example.com" />
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="name@example.com"
+                />
               </div>
               <div>
                 <span>Profile Picture</span>
               </div>
               <div className="pt-2">
-                <img src="https://randomuser.me/api/portraits/men/13.jpg" id="avatar-house" />
+                <img
+                  src="https://randomuser.me/api/portraits/men/13.jpg"
+                  id="avatar-house"
+                />
               </div>
               <form className="pt-2">
-                <input type="email" className="form-control" placeholder="https://..." />
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="https://..."
+                />
                 <div className="pt-2">
-                  <a href="#" className="btn btn-success">Save Changes</a>
+                  <a href="#" className="btn btn-success">
+                    Save Changes
+                  </a>
                 </div>
               </form>
             </div>
-            Empty Column
+            {/* Empty Column */}
             <div className="col-1"></div>
             {/* My Listings Inputs */}
             <div className="col-7">
               <div className="pt-2">
-                <a href="#" className="btn btn-success">List a House</a>
+                <a href="#" className="btn btn-success">
+                  List a House
+                </a>
               </div>
               {/* No Items Listed
               <!-- <ul className="list-group pt-2">
                 <li className="list-group-item">You don't have any houses listed</li>
               </ul>  */}
               {/* Listing 1 House Card */}
-              <div className="card mb-3 mt-3" style="max-width: 540px;">
+              <div className="card mb-3 mt-3" style={{ width: `540px` }}>
                 <div className="row g-0">
                   <div className="col-md-4">
-                    <img src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png" className="img-fluid rounded-start" />
+                    <img
+                      src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+                      className="img-fluid rounded-start"
+                    />
                   </div>
                   <div className="col-md-8">
                     <div className="card-body">
                       <h5 className="card-title">Luxury Villa in Chaweng</h5>
                       <div className="text-muted">
-                        <small><i className="fa-solid fa-location-dot"></i> 4 Rooms • $150/Night</p></small>
+                        <small>
+                          <i className="fa-solid fa-location-dot"></i>
+                          <p> 4 Rooms • $150/Night</p>
+                        </small>
+                      </div>
+                      <p className="card-text">
+                        This is a wider card with supporting text below as a
+                        natural lead-in to additional content. This content is a
+                        little bit longer.
+                      </p>
+                      <a type="button" className="btn btn-outline-secondary">
+                        Edit
+                      </a>
+                      <a type="button" className="btn btn-outline-success">
+                        View
+                      </a>
                     </div>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <a type="button" className="btn btn-outline-secondary">Edit</a>
-                    <a type="button" className="btn btn-outline-success">View</a>
                   </div>
                 </div>
               </div>
-            </div>
-            {/* Listing 2 House Card */}
-            <div className="card mb-3 mt-3" style="max-width: 540px;">
-              <div className="row g-0">
-                <div className="col-md-4">
-                  <img src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png" className="img-fluid rounded-start" />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">Luxury Villa in Chaweng</h5>
-                    <div className="text-muted">
-                      <small><p><i className="fa-solid fa-location-dot"></i> 4 Rooms • $150/Night</p></small>
+              {/* Listing 2 House Card */}
+              <div className="card mb-3 mt-3" style={{ width: `540px` }}>
+                <div className="row g-0">
+                  <div className="col-md-4">
+                    <img
+                      src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+                      className="img-fluid rounded-start"
+                    />
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body">
+                      <h5 className="card-title">Luxury Villa in Chaweng</h5>
+                      <div className="text-muted">
+                        <small>
+                          <p>
+                            <i className="fa-solid fa-location-dot"></i> 4 Rooms
+                            • $150/Night
+                          </p>
+                        </small>
+                      </div>
+                      <p className="card-text">
+                        This is a wider card with supporting text below as a
+                        natural lead-in to additional content. This content is a
+                        little bit longer.
+                      </p>
+                      <a type="button" className="btn btn-outline-secondary">
+                        Edit
+                      </a>
+                      <a type="button" className="btn btn-outline-success">
+                        View
+                      </a>
                     </div>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <a type="button" className="btn btn-outline-secondary">Edit</a>
-                    <a type="button" className="btn btn-outline-success">View</a>
                   </div>
                 </div>
               </div>
@@ -107,7 +162,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-    </div >
-    </div >
+    </div>
   )
 }
