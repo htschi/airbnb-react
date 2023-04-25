@@ -11,7 +11,7 @@ import HouseEdit from './pages/HouseEdit'
 
 
 function App() {
-  return <HouseEdit />
+  return <House />
 }
 
 export default App
