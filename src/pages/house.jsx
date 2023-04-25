@@ -1,5 +1,31 @@
 // import { useParams } from react-router-dom
 export default function House() {
+  let house = {
+    title: 'Luxury Villa in Koh Phangan',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 350,
+    booking: Boolean,
+    location: 'Koh Phangan',
+    rooms: 3,
+    rating: 1,
+    photos: ['Array of Strings'],
+    host: {
+      name: 'Max Mustermann',
+      avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
+    },
+  }
+
+  let review = {
+    date: '02 Jan 2020 - 01:01',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content. This content is  little bit longer',
+    rating: 1,
+    author: {
+      name: 'Anna Mustermann',
+      avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
+    },
+  }
   return (
     <div>
       {/* TOP Container with Logo and Account+Login Button */}
@@ -99,38 +125,26 @@ export default function House() {
         <div className="row">
           {/* Container Left Side */}
           <div className="col-12 col-md-8">
-            <h2>Luxury Villa in Chaweng</h2>
+            <h2>{house.title}</h2>
             <p className="card-text fs-6 fw-normal">
               <small>
-                <i className="fa-solid fa-location-dot"></i> City • X Rooms
+                <i className="fa-solid fa-location-dot"></i> {house.location} •{' '}
+                {house.rooms}{' '}
+                {house.rooms == 1 ? <span>Room</span> : <span>Rooms</span>}
               </small>
             </p>
             <div className="row">
               <div className="col-1 d-flex align-items-center">
-                <img
-                  src="https://randomuser.me/api/portraits/men/33.jpg"
-                  id="avatar-house"
-                />
+                <img src={house.host.avatar} id="avatar-house" />
               </div>
               <div className="col-11 pt-3">
                 <span className="fs-6 text-muted">
                   <small>Hosted by</small>
                 </span>
-                <p>Firstname Lastname</p>
+                <p>{house.host.name}</p>
               </div>
             </div>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum
-            </p>
+            <p>{house.description}</p>
             <h2 className="mt-5">0 Reviews</h2>
             <span>Leave a review</span>
             <form>
@@ -156,21 +170,14 @@ export default function House() {
               <div className="container">
                 <div className="row g-0">
                   <div className="col-md-1 pt-3">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/13.jpg"
-                      id="avatar-house"
-                    />
+                    <img src={review.author.avatar} id="avatar-house" />
                   </div>
                   <div className="col-md-10">
                     <p className="text-muted mt-3">
-                      <small>02 Jan 2020 - 01:01</small>
+                      <small>{review.date}</small>
                     </p>
-                    <h5 className="mt-1">Firstname Lastname</h5>
-                    <p>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
+                    <h5 className="mt-1">{review.author.name}</h5>
+                    <p>{review.description}</p>
                   </div>
                   <div className="col-md-1 text-end mt-2">
                     <i className="fa-solid fa-thumbs-up"></i>
@@ -182,21 +189,14 @@ export default function House() {
               <div className="container">
                 <div className="row g-0">
                   <div className="col-md-1 pt-3">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/13.jpg"
-                      id="avatar-house"
-                    />
+                    <img src={review.author.avatar} id="avatar-house" />
                   </div>
                   <div className="col-md-10">
                     <p className="text-muted mt-3">
-                      <small>02 Jan 2020 - 01:01</small>
+                      <small>{review.date}</small>
                     </p>
-                    <h5 className="mt-1">Firstname Lastname</h5>
-                    <p>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
+                    <h5 className="mt-1">{review.author.name}</h5>
+                    <p>{review.description}</p>
                   </div>
                   <div className="col-md-1 text-end mt-2">
                     <i className="fa-solid fa-thumbs-up"></i>
@@ -220,7 +220,7 @@ export default function House() {
             {/* Review Submitted */}
             <div className="card" style={{ width: `18rem` }}>
               <div className="card-body">
-                <h5 className="card-title">$150/night</h5>
+                <h5 className="card-title">${house.price}/night</h5>
                 <p className="card-text">
                   <small>
                     <i className="fa-solid fa-thumbs-up"></i> 0 reviews
@@ -231,7 +231,7 @@ export default function House() {
                     <span>
                       Thank you for your enquiry.
                       <br />
-                      <small>Sent on 02 Jan 2020 - 01:01 </small>
+                      <small>{review.date}</small>
                     </span>
                   </div>
                 </div>

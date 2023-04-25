@@ -157,9 +157,7 @@ export default function Houses() {
             </div>
             {/* Search Button */}
             <div className="col-12 col-md-6 col-lg-2 mb-1">
-              <button type="button" className="btn btn-success">
-                Search
-              </button>
+              <button className="btn btn-success">Search</button>
             </div>
           </div>
         </div>
