@@ -1,5 +1,6 @@
 // import { useParams } from react-router-dom
 import { useState } from 'react'
+import SubmitReview from '../components/submitReview'
 export default function House() {
   let house = {
     title: 'Luxury Villa in Koh Phangan',
@@ -27,21 +28,31 @@ export default function House() {
     },
   }
 
-  let review = {
-    date: '02 Jan 2020 - 01:01',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content. This content is  little bit longer',
-    rating: 1,
-    author: {
-      name: 'Anna Mustermann',
-      avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
-    },
-  }
-
+  // UseState for selectedPhoto
   const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
+  const [comment, setComment] = useState('')
+  const [thumbs, setThumbs] = useState(1)
+  const [reviews, setReviews] = useState([])
 
   function showPhoto(photo) {
     setSelectedPhoto(photo)
+  }
+
+  function getReview(e, comment, thumbs) {
+    e.preventDefault()
+    console.log(comment)
+    let newReview = {
+      date: '02 Jan 2020 - 01:01',
+      description: comment,
+      rating: thumbs,
+      author: {
+        name: 'Anna Mustermann',
+        avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
+      },
+    }
+    // review.push(newReview)
+    // console.log(reviews)
+    setReviews([...reviews, newReview])
   }
 
   return (
@@ -120,63 +131,45 @@ export default function House() {
             <p>{house.description}</p>
             <h2 className="mt-5">0 Reviews</h2>
             <span>Leave a review</span>
-            <form>
+            <form onSubmit={(e) => getReview(e, comment, thumbs)}>
               <div>
-                <textarea className="form-control" rows="3"></textarea>
+                <textarea
+                  className="form-control"
+                  rows="3"
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
               </div>
-              {/* Dumbs up & Dumps Down Button */}
+              {/* Thumbs Up & Thumbs Down Button */}
               <div className="mt-2 mb-2">
-                <button type="button" className="btn btn-outline-secondary">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => setThumbs(1)}
+                  type="button"
+                >
                   <i className="fa-solid fa-thumbs-up"></i>
                 </button>
-                <button type="button" className="btn btn-outline-secondary">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => setThumbs(-1)}
+                  type="button"
+                >
                   <i className="fa-solid fa-thumbs-down"></i>
                 </button>
               </div>
               {/* Submit Button */}
-              <a href="#" className="btn btn-primary">
-                Submit
-              </a>
+              <button className="btn btn-primary">Submit</button>
             </form>
             {/* With Reviews */}
-            <div className="card mb-4 mt-5">
-              <div className="container">
-                <div className="row g-0">
-                  <div className="col-md-1 pt-3">
-                    <img src={review.author.avatar} id="avatar-house" />
-                  </div>
-                  <div className="col-md-10">
-                    <p className="text-muted mt-3">
-                      <small>{review.date}</small>
-                    </p>
-                    <h5 className="mt-1">{review.author.name}</h5>
-                    <p>{review.description}</p>
-                  </div>
-                  <div className="col-md-1 text-end mt-2">
-                    <i className="fa-solid fa-thumbs-up"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="card mb-4 mt-3">
-              <div className="container">
-                <div className="row g-0">
-                  <div className="col-md-1 pt-3">
-                    <img src={review.author.avatar} id="avatar-house" />
-                  </div>
-                  <div className="col-md-10">
-                    <p className="text-muted mt-3">
-                      <small>{review.date}</small>
-                    </p>
-                    <h5 className="mt-1">{review.author.name}</h5>
-                    <p>{review.description}</p>
-                  </div>
-                  <div className="col-md-1 text-end mt-2">
-                    <i className="fa-solid fa-thumbs-up"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {reviews.map((e, index) => (
+              <SubmitReview
+                key={index}
+                avatar={e.author.avatar}
+                date={e.date}
+                name={e.author.name}
+                description={e.description}
+                rate={e.rating}
+              />
+            ))}
           </div>
           {/* Container Right Side */}
           <div className="col-12 col-md-4">
@@ -204,7 +197,7 @@ export default function House() {
                     <span>
                       Thank you for your enquiry.
                       <br />
-                      <small>{review.date}</small>
+                      <small>???</small>
                     </span>
                   </div>
                 </div>
