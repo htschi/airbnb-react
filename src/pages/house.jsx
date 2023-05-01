@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 // import { useParams } from react-router-dom
 import { useState } from 'react'
 export default function House() {
@@ -39,16 +37,12 @@ export default function House() {
       avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
     },
   }
-<<<<<<< Updated upstream
 
   const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
 
   function showPhoto(photo) {
     setSelectedPhoto(photo)
   }
-=======
-  const [selectedPhoto, setSelectedPhoto] = useState('')
->>>>>>> Stashed changes
 
   return (
     <div>
