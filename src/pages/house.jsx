@@ -9,7 +9,9 @@ export default function House() {
     location: 'Koh Phangan',
     rooms: 3,
     rating: 1,
-    photos: ['Array of Strings'],
+    photos: [
+      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
+    ],
     host: {
       name: 'Max Mustermann',
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
@@ -55,7 +57,7 @@ export default function House() {
         {/* Big Main Picture */}
         <div className="col-12 col-md-6">
           <img
-            src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+            src={house.photos}
             className="img-fluid h-100"
             id="big-picture"
           />
@@ -64,58 +66,31 @@ export default function House() {
         <div className="col-12 col-md-6">
           <div className="row row-cols-3">
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
             <div className="col p-2">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                className="img-fluid"
-              />
+              <img src={house.photos} className="img-fluid" />
             </div>
           </div>
         </div>
