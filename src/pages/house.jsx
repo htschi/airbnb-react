@@ -14,8 +14,6 @@ export default function House() {
     rating: 1,
     photos: [
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-<<<<<<< HEAD
-=======
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_02.png',
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_03.png',
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_04.png',
@@ -24,7 +22,6 @@ export default function House() {
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_07.png',
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_08.png',
       'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_09.png',
->>>>>>> gallery
     ],
     host: {
       name: 'Max Mustermann',
@@ -42,16 +39,12 @@ export default function House() {
       avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
     },
   }
-<<<<<<< Updated upstream
 
   const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
 
   function showPhoto(photo) {
     setSelectedPhoto(photo)
   }
-=======
-  const [selectedPhoto, setSelectedPhoto] = useState('')
->>>>>>> Stashed changes
 
   return (
     <div>
@@ -82,11 +75,7 @@ export default function House() {
         {/* Big Main Picture */}
         <div className="col-12 col-md-6">
           <img
-<<<<<<< HEAD
-            src={house.photos}
-=======
             src={selectedPhoto}
->>>>>>> gallery
             className="img-fluid h-100"
             id="big-picture"
           />
@@ -94,35 +83,6 @@ export default function House() {
         {/* Small Pictures */}
         <div className="col-12 col-md-6">
           <div className="row row-cols-3">
-<<<<<<< HEAD
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-            <div className="col p-2">
-              <img src={house.photos} className="img-fluid" />
-            </div>
-=======
             {house.photos.map((e, index) => (
               <div className="col p-2" key={index}>
                 <img
@@ -132,7 +92,6 @@ export default function House() {
                 />
               </div>
             ))}
->>>>>>> gallery
           </div>
         </div>
       </div>
