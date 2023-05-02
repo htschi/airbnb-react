@@ -7,7 +7,7 @@ export default function House() {
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 350,
-    booking: Boolean,
+    booking: false,
     location: 'Koh Phangan',
     rooms: 3,
     rating: 1,
@@ -33,6 +33,7 @@ export default function House() {
   const [comment, setComment] = useState('')
   const [thumbs, setThumbs] = useState(1)
   const [reviews, setReviews] = useState([])
+  const [booking, setBooking] = useState(false)
 
   function showPhoto(photo) {
     setSelectedPhoto(photo)
@@ -55,6 +56,11 @@ export default function House() {
     setReviews([...reviews, newReview])
   }
 
+  function requestBooking(e) {
+    e.preventDefault()
+    setBooking(true)
+    console.log(booking)
+  }
   return (
     <div>
       {/* TOP Container with Logo and Account+Login Button */}
@@ -172,19 +178,33 @@ export default function House() {
             ))}
           </div>
           {/* Container Right Side */}
+          {/* Request Booking */}
           <div className="col-12 col-md-4">
-            {/* <!-- <div className="card" style={{width: `18rem`; height: `16rem`}}>
+            <div className="card" style={{ width: `18rem`, height: `16rem` }}>
               <div className="card-body">
                 <h5 className="card-title">$150/night</h5>
                 <p className="card-text">0 reviews</p>
-                <div className="mb-3">
-                  <textarea className="form-control" rows="3"></textarea>
-                </div>
-                <a href="#" className="btn btn-primary">Request booking</a>
+                {booking == false ? (
+                  <form onSubmit={(e) => requestBooking(e)}>
+                    <div className="mb-3">
+                      <textarea className="form-control" rows="3"></textarea>
+                    </div>
+                    <button className="btn btn-primary">Request booking</button>
+                  </form>
+                ) : (
+                  <div className="row">
+                    <div className="alert alert-success" role="alert">
+                      <span>
+                        Thank you for your enquiry.
+                        <br />
+                        <small>02 Jan 2020 - 01:01</small>
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div> --> */}
-            {/* Review Submitted */}
-            <div className="card" style={{ width: `18rem` }}>
+            </div>
+            {/* <div className="card" style={{ width: `18rem` }}>
               <div className="card-body">
                 <h5 className="card-title">${house.price}/night</h5>
                 <p className="card-text">
@@ -202,7 +222,7 @@ export default function House() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
