@@ -1,4 +1,62 @@
+import { useState } from 'react'
+
 export default function Profile() {
+  let houses = [
+    {
+      image:
+        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
+      title: 'Luxury Villa in Chaweng',
+      price: 150,
+      location: 'Chaweng',
+      rooms: 2,
+      reviews: 3,
+      score: 1,
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
+    },
+    {
+      image:
+        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
+      title: 'Luxury Villa in Phangan',
+      price: 150,
+      location: 'Koh Phangan',
+      rooms: 3,
+      reviews: 3,
+      score: 1,
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
+    },
+    {
+      image:
+        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
+      title: 'Luxury Villa in Samui',
+      price: 150,
+      location: 'Samui',
+      rooms: 4,
+      reviews: 3,
+      score: 1,
+      description:
+        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
+    },
+  ]
+
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [avatar, setAvatar] = useState()
+
+  function setProfileInfo(e) {
+    e.preventDefault()
+    setName(e.target.name.value)
+    setEmail(e.target.email.value)
+    setAvatar(e.target.avatar.value)
+    let user = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      avatar: e.target.avatar.value,
+    }
+    return user
+  }
+
   return (
     <div>
       {/* TOP Container with Logo and Account+Login Button */}
@@ -39,41 +97,44 @@ export default function Profile() {
           <div className="row">
             {/* Profile Input */}
             <div className="col-3">
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Firstname Lastname"
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="name@example.com"
-                />
-              </div>
-              <div>
-                <span>Profile Picture</span>
-              </div>
-              <div className="pt-2">
-                <img
-                  src="https://randomuser.me/api/portraits/men/13.jpg"
-                  id="avatar-house"
-                />
-              </div>
-              <form className="pt-2">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="https://..."
-                />
+              <form onSubmit={(e) => setProfileInfo(e)}>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    value={name}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email address</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    value={email}
+                  />
+                </div>
+                <div>
+                  <span>Profile Picture</span>
+                </div>
                 <div className="pt-2">
-                  <a href="#" className="btn btn-success">
-                    Save Changes
-                  </a>
+                  <img
+                    src="https://randomuser.me/api/portraits/men/13.jpg"
+                    id="avatar-house"
+                  />
+                </div>
+                <div className="pt-2">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="avatar"
+                    value={avatar}
+                  />
+                  <div className="pt-2">
+                    <button className="btn btn-success">Save Changes</button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -82,82 +143,53 @@ export default function Profile() {
             {/* My Listings Inputs */}
             <div className="col-7">
               <div className="pt-2">
-                <a href="#" className="btn btn-success">
-                  List a House
-                </a>
+                <a className="btn btn-success">List a House</a>
               </div>
               {/* No Items Listed
               <!-- <ul className="list-group pt-2">
                 <li className="list-group-item">You don't have any houses listed</li>
               </ul>  */}
               {/* Listing 1 House Card */}
-              <div className="card mb-3 mt-3" style={{ width: `540px` }}>
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img
-                      src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                      className="img-fluid rounded-start"
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title">Luxury Villa in Chaweng</h5>
-                      <div className="text-muted">
-                        <small>
-                          <i className="fa-solid fa-location-dot"></i>
-                          <p> 4 Rooms • $150/Night</p>
-                        </small>
+              {houses.length == 0 ? (
+                <h4>You don't have any houses</h4>
+              ) : (
+                houses.map((e, index) => (
+                  <div className="card mb-3 mt-3" style={{ width: `540px` }}>
+                    <div className="row g-0">
+                      <div className="col-md-4">
+                        <img
+                          src={e.image}
+                          className="img-fluid rounded-start"
+                        />
                       </div>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </p>
-                      <a type="button" className="btn btn-outline-secondary">
-                        Edit
-                      </a>
-                      <a type="button" className="btn btn-outline-success">
-                        View
-                      </a>
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h5 className="card-title">{e.title}</h5>
+                          <div className="text-muted">
+                            <small>
+                              <i className="fa-solid fa-location-dot"></i>
+                              <p>
+                                {' '}
+                                {e.rooms} Rooms • ${e.price}/Night
+                              </p>
+                            </small>
+                          </div>
+                          <p className="card-text">{e.description}</p>
+                          <a
+                            type="button"
+                            className="btn btn-outline-secondary"
+                          >
+                            Edit
+                          </a>
+                          <a type="button" className="btn btn-outline-success">
+                            View
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              {/* Listing 2 House Card */}
-              <div className="card mb-3 mt-3" style={{ width: `540px` }}>
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img
-                      src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                      className="img-fluid rounded-start"
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title">Luxury Villa in Chaweng</h5>
-                      <div className="text-muted">
-                        <small>
-                          <p>
-                            <i className="fa-solid fa-location-dot"></i> 4 Rooms
-                            • $150/Night
-                          </p>
-                        </small>
-                      </div>
-                      <p className="card-text">
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </p>
-                      <a type="button" className="btn btn-outline-secondary">
-                        Edit
-                      </a>
-                      <a type="button" className="btn btn-outline-success">
-                        View
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                ))
+              )}
             </div>
           </div>
         </div>

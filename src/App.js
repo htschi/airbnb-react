@@ -11,7 +11,7 @@ import HouseEdit from './pages/houseEdit'
 
 
 function App() {
-  return <Login />
+  return <Profile />
 }
 
 export default App
