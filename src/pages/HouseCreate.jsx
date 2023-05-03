@@ -1,60 +1,59 @@
+import Nav from '../components/nav'
+
 export default function HouseCreate() {
+  function getInfo(e) {
+    e.preventDefault()
+    let houseInfo = {
+      shortTitle: e.target.shortTitle.value,
+      description: e.target.description.value,
+      numberOfRooms: e.target.rooms.value,
+      location: e.target.location.value,
+      price: e.target.price.value,
+      // photo: [e.target.photo.value],
+    }
+    console.log(houseInfo)
+    return houseInfo
+  }
+
   return (
     <div>
-      {/* TOP Container with Logo and Account+Login Button */}
-      <div className="container p-2">
-        <div className="row">
-          {/* Logo */}
-          <div className="col align-self-center">
-            <img src="images/logo-airbnb.png" className="w-25" />
-          </div>
-          {/* Buttons / Links */}
-          <div className="col text-end">
-            <a className="btn btn-outline-secondary">
-              <img
-                src="https://randomuser.me/api/portraits/men/11.jpg"
-                id="avatar-login"
-              />
-              <span>Name</span>
-            </a>
-            <a type="button" class="btn btn-outline-secondary">
-              Login
-            </a>
-          </div>
-        </div>
-      </div>
-      <form>
+      <Nav />
+      <form onSubmit={(e) => getInfo(e)}>
         <div className="container mt-5">
           <h3 className="mb-3">List a House</h3>
           {/* Short Title */}
           <div className="mb-3">
             <label className="form-label">Short Title</label>
-            <input type="text" className="form-control " />
+            <input type="text" className="form-control" name="shortTitle" />
           </div>
           {/* Description */}
           <div className="mb-3">
             <label className="form-label">Description</label>
-            <textarea className="form-control" rows="3"></textarea>
+            <textarea
+              className="form-control"
+              rows="3"
+              name="description"
+            ></textarea>
           </div>
           {/* Number of Rooms */}
           <div className="mb-3">
             <label className="form-label">Number of Rooms</label>
-            <input type="number" className="form-control " />
+            <input type="number" className="form-control" name="rooms" />
           </div>
           {/* Any location */}
           <div className="mb-3">
             <label className="form-label">Location</label>
-            <select className="form-select">
-              <option selected value="1">
-                Koh Phangan
-              </option>
+            <select className="form-select" name="location">
+              <option value="1">Koh Phangan</option>
               <option value="2">Koh Samui</option>
               <option value="3">Bali</option>
             </select>
           </div>
           {/* Price */}
           <div className="mb-3">
-            <label className="form-label">Price (per Night)</label>
+            <label className="form-label" name="price">
+              Price (per Night)
+            </label>
             <div className="input-group">
               <span className="input-group-text">
                 <i className="fa-solid fa-dollar-sign"></i>
@@ -69,53 +68,60 @@ export default function HouseCreate() {
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
             <input
               type="text"
               className="form-control mb-2"
               placeholder="http://..."
+              name="photo"
             />
           </div>
           {/* Button Submit */}
-          <div class="mb-5">
-            <button type="button" class="btn btn-success">
-              Submit
-            </button>
+          <div className="mb-5">
+            <button className="btn btn-success">Submit</button>
           </div>
         </div>
       </form>

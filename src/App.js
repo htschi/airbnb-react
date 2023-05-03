@@ -10,8 +10,9 @@ import HouseEdit from './pages/houseEdit'
 
 
 
+
 function App() {
-  return <Profile />
+  return <House />
 }
 
 export default App
