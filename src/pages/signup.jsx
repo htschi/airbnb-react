@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function SignUp() {
   function getSignUpInfo(e) {
     e.preventDefault()
@@ -53,7 +54,7 @@ export default function SignUp() {
               <div>
                 <span>
                   Already have an Account?
-                  <a>Login</a>
+                  <Link to="/Login">Login</Link>
                 </span>
               </div>
             </form>

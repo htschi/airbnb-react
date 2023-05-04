@@ -1,4 +1,5 @@
 import Nav from '../components/nav'
+import { Link } from 'react-router-dom'
 export default function Houses() {
   let houses = [
     {
@@ -149,7 +150,7 @@ export default function Houses() {
         <div className="row mt-1">
           {houses.map((e, index) => (
             <div key={index} className="col-12 col-md-6 col-lg-3 mb-3">
-              <div className="card">
+              <Link to="/house" className="card">
                 <img src={e.image} className="card-img-top" />
                 <div className="card-body">
                   <p className="card-text fs-6 fw-normal text-muted">
@@ -175,7 +176,7 @@ export default function Houses() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

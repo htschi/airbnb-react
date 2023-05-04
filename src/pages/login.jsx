@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function Login() {
   function getLoginInfo(e) {
     e.preventDefault()
@@ -37,7 +38,9 @@ export default function Login() {
               <div>
                 <span>
                   New to Airbnb?
-                  <a href="#">Sign Up</a>
+                  <Link to="/" href="#">
+                    Sign Up
+                  </Link>
                 </span>
               </div>
             </form>

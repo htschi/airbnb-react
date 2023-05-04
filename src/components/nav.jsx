@@ -1,4 +1,6 @@
-export default function Nav(props) {
+import { Link } from 'react-router-dom'
+
+export default function Nav() {
   return (
     <div className="container p-2">
       <div className="row">
@@ -8,16 +10,16 @@ export default function Nav(props) {
         </div>
         {/* Buttons / Links */}
         <div className="col text-end">
-          <a className="btn btn-outline-secondary">
+          <Link to="/profile" className="btn btn-outline-secondary">
             <img
               src="https://randomuser.me/api/portraits/men/11.jpg"
               id="avatar-login"
             />
-            <span>Name</span>
-          </a>
-          <a type="button" className="btn btn-outline-secondary">
+            <span>My Profile</span>
+          </Link>
+          <Link to="/login" className="btn btn-outline-secondary">
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>
