@@ -1,7 +1,9 @@
 // import { useParams } from react-router-dom
-import { useState } from 'react'
-import SubmitReview from '../components/submitReview'
 import Nav from '../components/nav'
+import Reviews from '../components/reviews'
+import Booking from '../components/booking'
+import HouseThumbnail from '../components/houseThumbnail'
+
 export default function House() {
   let house = {
     title: 'Luxury Villa in Koh Phangan',
@@ -29,39 +31,6 @@ export default function House() {
     },
   }
 
-  // UseState for selectedPhoto
-  const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
-  const [comment, setComment] = useState('')
-  const [thumbs, setThumbs] = useState(1)
-  const [reviews, setReviews] = useState([])
-  const [booking, setBooking] = useState(false)
-
-  function showPhoto(photo) {
-    setSelectedPhoto(photo)
-  }
-
-  function getReview(e, comment, thumbs) {
-    e.preventDefault()
-    console.log(comment)
-    let newReview = {
-      date: '02 Jan 2020 - 01:01',
-      description: comment,
-      rating: thumbs,
-      author: {
-        name: 'Anna Mustermann',
-        avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
-      },
-    }
-    // review.push(newReview)
-    // console.log(reviews)
-    setReviews([...reviews, newReview])
-  }
-
-  function requestBooking(e) {
-    e.preventDefault()
-    setBooking(true)
-    console.log(booking)
-  }
   return (
     <div>
       {/* TOP Container with Logo and Account+Login Button */}
@@ -69,27 +38,8 @@ export default function House() {
       {/* Container with House Pictures */}
       <div className="row border border-1">
         {/* Big Main Picture */}
-        <div className="col-12 col-md-6">
-          <img
-            src={selectedPhoto}
-            className="img-fluid h-100"
-            id="big-picture"
-          />
-        </div>
         {/* Small Pictures */}
-        <div className="col-12 col-md-6">
-          <div className="row row-cols-3">
-            {house.photos.map((e, index) => (
-              <div className="col p-2" key={index}>
-                <img
-                  src={e}
-                  className="img-fluid"
-                  onClick={() => showPhoto(e)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <HouseThumbnail photos={house.photos} />
       </div>
       {/* Container Text and Textarea */}
       <div className="container mt-3">
@@ -116,94 +66,11 @@ export default function House() {
               </div>
             </div>
             <p>{house.description}</p>
-            <h2 className="mt-5">0 Reviews</h2>
-            <span>Leave a review</span>
-            <form onSubmit={(e) => getReview(e, comment, thumbs)}>
-              <div>
-                <textarea
-                  className="form-control"
-                  rows="3"
-                  onChange={(e) => setComment(e.target.value)}
-                ></textarea>
-              </div>
-              {/* Thumbs Up & Thumbs Down Button */}
-              <div className="mt-2 mb-2">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => setThumbs(1)}
-                  type="button"
-                >
-                  <i className="fa-solid fa-thumbs-up"></i>
-                </button>
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => setThumbs(-1)}
-                  type="button"
-                >
-                  <i className="fa-solid fa-thumbs-down"></i>
-                </button>
-              </div>
-              {/* Submit Button */}
-              <button className="btn btn-primary">Submit</button>
-            </form>
-            {/* With Reviews */}
-            {reviews.map((e, index) => (
-              <SubmitReview
-                key={index}
-                avatar={e.author.avatar}
-                date={e.date}
-                name={e.author.name}
-                description={e.description}
-                rate={e.rating}
-              />
-            ))}
+            <Reviews />
           </div>
           {/* Container Right Side */}
-          {/* Request Booking */}
           <div className="col-12 col-md-4">
-            <div className="card" style={{ width: `18rem`, height: `16rem` }}>
-              <div className="card-body">
-                <h5 className="card-title">$150/night</h5>
-                <p className="card-text">0 reviews</p>
-                {booking == false ? (
-                  <form onSubmit={(e) => requestBooking(e)}>
-                    <div className="mb-3">
-                      <textarea className="form-control" rows="3"></textarea>
-                    </div>
-                    <button className="btn btn-primary">Request booking</button>
-                  </form>
-                ) : (
-                  <div className="row">
-                    <div className="alert alert-success" role="alert">
-                      <span>
-                        Thank you for your enquiry.
-                        <br />
-                        <small>02 Jan 2020 - 01:01</small>
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-            {/* <div className="card" style={{ width: `18rem` }}>
-              <div className="card-body">
-                <h5 className="card-title">${house.price}/night</h5>
-                <p className="card-text">
-                  <small>
-                    <i className="fa-solid fa-thumbs-up"></i> 0 reviews
-                  </small>
-                </p>
-                <div className="row">
-                  <div className="alert alert-success" role="alert">
-                    <span>
-                      Thank you for your enquiry.
-                      <br />
-                      <small>???</small>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div> */}
+            <Booking />
           </div>
         </div>
       </div>
