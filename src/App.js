@@ -24,7 +24,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/houseedit' element={<HouseEdit />} />
         <Route path='/houses' element={<Houses />} />
-        <Route path='/housecreate' element={<HouseCreate />} />
       </Routes>
     </BrowserRouter>
   )

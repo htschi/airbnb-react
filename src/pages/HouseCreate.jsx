@@ -3,6 +3,7 @@ import Nav from '../components/nav'
 export default function HouseCreate() {
   function getInfo(e) {
     e.preventDefault()
+    console.log(e.target)
     let houseInfo = {
       shortTitle: e.target.shortTitle.value,
       description: e.target.description.value,
@@ -51,14 +52,12 @@ export default function HouseCreate() {
           </div>
           {/* Price */}
           <div className="mb-3">
-            <label className="form-label" name="price">
-              Price (per Night)
-            </label>
+            <label className="form-label">Price (per Night)</label>
             <div className="input-group">
               <span className="input-group-text">
                 <i className="fa-solid fa-dollar-sign"></i>
               </span>
-              <input type="number" className="form-control" />
+              <input type="number" name="price" className="form-control" />
             </div>
           </div>
           {/* Add Photos */}

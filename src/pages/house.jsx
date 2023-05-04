@@ -1,4 +1,5 @@
 // import { useParams } from react-router-dom
+import { useState } from 'react'
 import Nav from '../components/nav'
 import Reviews from '../components/reviews'
 import Booking from '../components/booking'
@@ -31,6 +32,13 @@ export default function House() {
     },
   }
 
+  // UseState for selectedPhoto
+  const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
+
+  function showPhoto(photo) {
+    setSelectedPhoto(photo)
+  }
+
   return (
     <div>
       {/* TOP Container with Logo and Account+Login Button */}
@@ -38,8 +46,27 @@ export default function House() {
       {/* Container with House Pictures */}
       <div className="row border border-1">
         {/* Big Main Picture */}
+        <div className="col-12 col-md-6">
+          <img
+            src={selectedPhoto}
+            className="img-fluid h-100"
+            id="big-picture"
+          />
+        </div>
         {/* Small Pictures */}
-        <HouseThumbnail photos={house.photos} />
+        <div className="col-12 col-md-6">
+          <div className="row row-cols-3">
+            {house.photos.map((e, index) => (
+              <div className="col p-2" key={index}>
+                <img
+                  src={e}
+                  className="img-fluid"
+                  onClick={() => showPhoto(e)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       {/* Container Text and Textarea */}
       <div className="container mt-3">
