@@ -23,7 +23,6 @@ export default function HouseThumbnail(props) {
                     <small>
                       <i className="fa-solid fa-thumbs-up"></i> Reviews
                     </small>
-                    s
                   </p>
                 </div>
                 <div className="col">
