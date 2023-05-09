@@ -1,20 +1,21 @@
+import { Link } from 'react-router-dom'
 export default function HouseThumbnail(props) {
   return (
     <div>
-      {props.map((e, index) => (
+      {props.houses.map((house, index) => (
         <div key={index} className="col-12 col-md-6 col-lg-3 mb-3">
           <Link to="/house" className="card">
-            <img src={e.image} className="card-img-top" />
+            <img src={house.image} className="card-img-top" />
             <div className="card-body">
               <p className="card-text fs-6 fw-normal text-muted">
                 <small>
-                  <i className="fa-solid fa-location-dot"></i> {e.location} •{' '}
-                  {e.rooms}{' '}
-                  {e.rooms == 1 ? <span>Room</span> : <span>Rooms</span>}
+                  <i className="fa-solid fa-location-dot"></i> {house.location}{' '}
+                  • {house.rooms}{' '}
+                  {house.rooms == 1 ? <span>Room</span> : <span>Rooms</span>}
                 </small>
               </p>
               <h5 className="card-title fs-5 text-decoration-none">
-                {e.title}
+                {house.title}
               </h5>
               <div className="row">
                 <div className="col">
@@ -22,11 +23,12 @@ export default function HouseThumbnail(props) {
                     <small>
                       <i className="fa-solid fa-thumbs-up"></i> Reviews
                     </small>
+                    s
                   </p>
                 </div>
                 <div className="col">
                   <small>
-                    <p className="text-end text-muted">${e.price}/night</p>
+                    <p className="text-end text-muted">${house.price}/night</p>
                   </small>
                 </div>
               </div>

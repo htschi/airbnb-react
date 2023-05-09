@@ -19,11 +19,11 @@ function App() {
       <Routes>
         <Route path='/house' element={<House />} />
         <Route path='/housecreate' element={<HouseCreate />} />
-        <Route path='/' element={<SignUp />} />
+        <Route path='/' element={<Houses />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/houseedit' element={<HouseEdit />} />
-        <Route path='/houses' element={<Houses />} />
+        <Route path='/signup' element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   )

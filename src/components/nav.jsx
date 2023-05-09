@@ -1,6 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+axios.defaults.withCredentials = true
 
 export default function Nav() {
+  const navigate = useNavigate()
+  async function logout() {
+    let userToLogout = await axios.get('http://localhost:4000/logout')
+    console.log(userToLogout)
+    navigate('/login')
+  }
+
   return (
     <div className="container p-2">
       <div className="row">
@@ -17,9 +26,9 @@ export default function Nav() {
             />
             <span>My Profile</span>
           </Link>
-          <Link to="/login" className="btn btn-outline-secondary">
-            Login
-          </Link>
+          <button onClick={logout} className="btn btn-outline-secondary">
+            Logout
+          </button>
         </div>
       </div>
     </div>

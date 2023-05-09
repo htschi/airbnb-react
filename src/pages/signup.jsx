@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 export default function SignUp() {
   function getSignUpInfo(e) {
     e.preventDefault()
-    let loginInfo = {
+    let loginIsSuccessed = false
+    let loginInfo = axios.post('http://localhost:4000/signup', {
       name: e.target.name.value,
       picture: e.target.picture.value,
       email: e.target.email.value,
       password: e.target.email.value,
-    }
-    console.log(loginInfo)
+    })
   }
 
   return (

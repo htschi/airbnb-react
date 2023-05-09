@@ -1,12 +1,23 @@
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+let loginIsSuccessed = false
 export default function Login() {
-  function getLoginInfo(e) {
+  const navigate = useNavigate()
+
+  async function getLoginInfo(e) {
     e.preventDefault()
-    let loginInfo = {
+    let responseFromAPI = await axios.post('http://localhost:4000/login', {
       email: e.target.email.value,
       password: e.target.password.value,
+    })
+    if (responseFromAPI.data !== 'User does not exist') {
+      loginIsSuccessed = true
+      navigate('/')
+    } else {
+      loginIsSuccessed = false
     }
-    console.log(loginInfo)
   }
 
   return (
@@ -38,9 +49,7 @@ export default function Login() {
               <div>
                 <span>
                   New to Airbnb?
-                  <Link to="/" href="#">
-                    Sign Up
-                  </Link>
+                  <Link to="/">Sign Up</Link>
                 </span>
               </div>
             </form>
