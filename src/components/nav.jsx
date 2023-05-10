@@ -6,7 +6,6 @@ export default function Nav() {
   const navigate = useNavigate()
   async function logout() {
     let userToLogout = await axios.get('http://localhost:4000/logout')
-    console.log(userToLogout)
     navigate('/login')
   }
 

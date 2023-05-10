@@ -1,17 +1,18 @@
 import Nav from '../components/nav'
+import axios from 'axios'
 
 export default function HouseCreate() {
-  function getInfo(e) {
+  async function getInfo(e) {
     e.preventDefault()
-    console.log(e.target)
-    let houseInfo = {
-      shortTitle: e.target.shortTitle.value,
+
+    let houseInfo = await axios.post('http://localhost:4000/houses', {
+      title: e.target.shortTitle.value,
       description: e.target.description.value,
-      numberOfRooms: e.target.rooms.value,
+      rooms: e.target.rooms.value,
       location: e.target.location.value,
       price: e.target.price.value,
       // photo: [e.target.photo.value],
-    }
+    })
     console.log(houseInfo)
     return houseInfo
   }

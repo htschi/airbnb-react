@@ -148,9 +148,7 @@ export default function Houses() {
       {/* Container with Accommodation Cards */}
       <div className="container p-2">
         {/* First row with 4 cards */}
-        <div className="row mt-1">
-          <HouseThumbnail houses={houses} />
-        </div>
+        <HouseThumbnail houses={houses} />
       </div>
     </div>
   )
