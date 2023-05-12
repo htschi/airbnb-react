@@ -3,36 +3,20 @@ import { useState } from 'react'
 import Nav from '../components/nav'
 import Reviews from '../components/reviews'
 import Booking from '../components/booking'
-import HouseThumbnail from '../components/houseThumbnail'
+import { useParams } from 'react-router-dom'
 
 export default function House() {
-  let house = {
-    title: 'Luxury Villa in Koh Phangan',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 350,
-    booking: false,
-    location: 'Koh Phangan',
-    rooms: 3,
-    rating: 1,
-    photos: [
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_02.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_03.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_04.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_05.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_06.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_07.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_08.png',
-      'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_09.png',
-    ],
-    host: {
-      name: 'Max Mustermann',
-      avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
-    },
-  }
+  const { id } = useParams()
+  const [house, setHouse] = useState(null)
 
-  // UseState for selectedPhoto
+  async function getHouse() {
+    const response = await axios.get(`http://localhost:4000/houses/${id}`)
+    console.log(response.data)
+    setHouse(response.data)
+  }
+  getHouse()
+
+  //UseState for selectedPhoto
   const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
 
   function showPhoto(photo) {

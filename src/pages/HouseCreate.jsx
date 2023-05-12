@@ -13,7 +13,6 @@ export default function HouseCreate() {
       price: e.target.price.value,
       // photo: [e.target.photo.value],
     })
-    console.log(houseInfo)
     return houseInfo
   }
 
