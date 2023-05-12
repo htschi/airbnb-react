@@ -73,8 +73,8 @@ export default function Houses() {
     // gives out an array with house objects [{house 1}, {house 2}]
     console.log(response.data)
     setHouses(response.data)
-    console.log(houses)
   }
+  console.log(houses)
 
   return (
     <div>

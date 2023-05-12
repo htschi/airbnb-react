@@ -1,27 +1,31 @@
 // import { useParams } from react-router-dom
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from '../components/nav'
 import Reviews from '../components/reviews'
 import Booking from '../components/booking'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function House() {
   const { id } = useParams()
-  const [house, setHouse] = useState(null)
+  const [house, setHouse] = useState({})
 
   async function getHouse() {
-    const response = await axios.get(`http://localhost:4000/houses/${id}`)
+    let response = await axios.get(`http://localhost:4000/houses/${id}`)
     console.log(response.data)
     setHouse(response.data)
   }
-  getHouse()
 
   //UseState for selectedPhoto
-  const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
+  // const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
 
-  function showPhoto(photo) {
-    setSelectedPhoto(photo)
-  }
+  // function showPhoto(photo) {
+  //   setSelectedPhoto(photo)
+  // }
+
+  useEffect(() => {
+    getHouse()
+  }, [])
 
   return (
     <div>
@@ -30,17 +34,17 @@ export default function House() {
       {/* Container with House Pictures */}
       <div className="row border border-1">
         {/* Big Main Picture */}
-        <div className="col-12 col-md-6">
+        {/* <div className="col-12 col-md-6">
           <img
             src={selectedPhoto}
             className="img-fluid h-100"
             id="big-picture"
           />
-        </div>
+        </div> */}
         {/* Small Pictures */}
         <div className="col-12 col-md-6">
           <div className="row row-cols-3">
-            {house.photos.map((e, index) => (
+            {/* {house.photos.map((e, index) => (
               <div className="col p-2" key={index}>
                 <img
                   src={e}
@@ -48,7 +52,7 @@ export default function House() {
                   onClick={() => showPhoto(e)}
                 />
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
@@ -67,13 +71,15 @@ export default function House() {
             </p>
             <div className="row">
               <div className="col-1 d-flex align-items-center">
-                <img src={house.host.avatar} id="avatar-house" />
+                {house.host && (
+                  <img src={house.host.avatar} id="avatar-house" />
+                )}
               </div>
               <div className="col-11 pt-3">
                 <span className="fs-6 text-muted">
                   <small>Hosted by</small>
                 </span>
-                <p>{house.host.name}</p>
+                {house.host && <p>{house.host.name}</p>}
               </div>
             </div>
             <p>{house.description}</p>

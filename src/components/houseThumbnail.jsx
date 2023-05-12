@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
+
 export default function HouseThumbnail({ houses }) {
+  console.log(houses)
   return (
     <div className="row mt-1">
       {houses.map((house, index) => (
         <div key={index} className="col-3 col-md-6 col-lg-3 mb-3">
-          <Link to="/house" className="card">
-            <img src={house.photos} className="card-img-top" />
+          <Link to={`/houses/${house._id}`} className="card">
+            <img src={house.photos[1]} className="card-img-top" />
             <div className="card-body">
               <p className="card-text fs-6 fw-normal text-muted">
                 <small>
