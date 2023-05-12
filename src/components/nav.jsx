@@ -14,7 +14,7 @@ export default function Nav() {
       <div className="row">
         {/* Logo */}
         <div className="col align-self-center">
-          <img src="images/logo-airbnb.png" className="w-25" />
+          <img src="/images/logo-airbnb.png" className="w-25" />
         </div>
         {/* Buttons / Links */}
         <div className="col text-end">

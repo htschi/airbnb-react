@@ -9,19 +9,25 @@ import axios from 'axios'
 export default function House() {
   const { id } = useParams()
   const [house, setHouse] = useState({})
+  // UseState for selectedPhoto
+  const [selectedPhoto, setSelectedPhoto] = useState('')
 
   async function getHouse() {
     let response = await axios.get(`http://localhost:4000/houses/${id}`)
-    console.log(response.data)
+    console.log(response.data.photos[0])
     setHouse(response.data)
   }
 
-  //UseState for selectedPhoto
-  // const [selectedPhoto, setSelectedPhoto] = useState(house.photos[0])
+  function showPhoto(photo) {
+    setSelectedPhoto(photo)
+  }
 
-  // function showPhoto(photo) {
-  //   setSelectedPhoto(photo)
-  // }
+  useEffect(() => {
+    if (house.photos) {
+      console.log(house.photos[0])
+      setSelectedPhoto(house.photos[0])
+    }
+  }, [house])
 
   useEffect(() => {
     getHouse()
@@ -34,25 +40,26 @@ export default function House() {
       {/* Container with House Pictures */}
       <div className="row border border-1">
         {/* Big Main Picture */}
-        {/* <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6">
           <img
             src={selectedPhoto}
             className="img-fluid h-100"
             id="big-picture"
           />
-        </div> */}
+        </div>
         {/* Small Pictures */}
         <div className="col-12 col-md-6">
           <div className="row row-cols-3">
-            {/* {house.photos.map((e, index) => (
-              <div className="col p-2" key={index}>
-                <img
-                  src={e}
-                  className="img-fluid"
-                  onClick={() => showPhoto(e)}
-                />
-              </div>
-            ))} */}
+            {house.photos &&
+              house.photos.map((photo, index) => (
+                <div className="col p-2" key={index}>
+                  <img
+                    src={photo}
+                    className="img-fluid"
+                    onClick={() => showPhoto(photo)}
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </div>
