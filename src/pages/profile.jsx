@@ -1,24 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from '../components/nav'
 import Listings from '../components/listings'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Profile() {
+  const { id } = useParams()
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [avatar, setAvatar] = useState()
+  const [user, setId] = useState('')
 
-  function setProfileInfo(e) {
+  async function setProfileInfo(e) {
     e.preventDefault()
     setName(e.target.name.value)
     setEmail(e.target.email.value)
     setAvatar(e.target.avatar.value)
-    let user = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      avatar: e.target.avatar.value,
-    }
-    return user
   }
+
+  async function getUserId() {
+    let response = await axios.get(`http://localhost:4000/profile/${id}`)
+    setId(response.data)
+  }
+
+  useEffect(() => {
+    getUserId()
+  }, [])
 
   return (
     <div>
@@ -46,7 +53,7 @@ export default function Profile() {
                     type="text"
                     className="form-control"
                     name="name"
-                    value={name}
+                    defaultValue={user.name}
                   />
                 </div>
                 <div className="mb-3">
@@ -55,24 +62,21 @@ export default function Profile() {
                     type="email"
                     className="form-control"
                     name="email"
-                    value={email}
+                    defaultValue={user.email}
                   />
                 </div>
                 <div>
                   <span>Profile Picture</span>
                 </div>
                 <div className="pt-2">
-                  <img
-                    src="https://randomuser.me/api/portraits/men/13.jpg"
-                    id="avatar-house"
-                  />
+                  <img src={user.avatar} id="avatar-house" />
                 </div>
                 <div className="pt-2">
                   <input
                     type="text"
                     className="form-control"
                     name="avatar"
-                    value={avatar}
+                    defaultValue={avatar}
                   />
                   <div className="pt-2">
                     <button className="btn btn-success">Save Changes</button>

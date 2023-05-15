@@ -19,7 +19,7 @@ function App() {
         <Route path='/reviews/:id' element={<House />} />
         <Route path='/housecreate' element={<HouseCreate />} />
         <Route path='/' element={<Houses />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/:id' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/houseedit' element={<HouseEdit />} />
         <Route path='/signup' element={<SignUp />} />
