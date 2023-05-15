@@ -1,12 +1,18 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Booking() {
+  const { id } = useParams()
   const [booking, setBooking] = useState(false)
 
-  function requestBooking(e) {
+  async function requestBooking(e) {
     e.preventDefault()
+    let response = await axios.post(`http://localhost:4000/bookings/${id}`, {
+      description: e.target.description.value,
+    })
     setBooking(true)
-    console.log(booking)
+    return response
   }
   return (
     <div>
@@ -18,7 +24,11 @@ export default function Booking() {
           {booking == false ? (
             <form onSubmit={(e) => requestBooking(e)}>
               <div className="mb-3">
-                <textarea className="form-control" rows="3"></textarea>
+                <textarea
+                  className="form-control"
+                  rows="3"
+                  name="description"
+                ></textarea>
               </div>
               <button className="btn btn-primary">Request booking</button>
             </form>

@@ -1,25 +1,27 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export default function ReviewCreate() {
+  const { id } = useParams()
   const [comment, setComment] = useState('')
   const [thumbs, setThumbs] = useState(1)
   const [reviews, setReviews] = useState([])
 
   // Submitting Review
-  function getReview(e, comment, thumbs) {
+  async function getReview(e, comment, thumbs) {
     e.preventDefault()
-    console.log(comment)
-    let newReview = {
-      date: '02 Jan 2020 - 01:01',
+    let newReview = await axios.post(`http://localhost:4000/reviews/${id}`, {
       description: comment,
       rating: thumbs,
-      author: {
-        name: 'Anna Mustermann',
-        avatar: 'https://randomuser.me/api/portraits/women/13.jpg',
-      },
-    }
-    setReviews([...reviews, newReview]) // Spread-Operator: take the arr of reviews and add newReview to it
+    })
+    setReviews([...reviews, newReview.data]) // Spread-Operator: take the arr of reviews and add newReview to it
   }
+
+  useEffect(() => {
+    console.log(reviews)
+  }, [reviews])
 
   return (
     <div>
@@ -52,18 +54,18 @@ export default function ReviewCreate() {
         <button className="btn btn-primary">Submit</button>
       </form>
       {/* With Reviews */}
-      {reviews.map((e) => (
-        <div className="card mb-4 mt-5">
+      {reviews.map((e, index) => (
+        <div key={index} className="card mb-4 mt-5">
           <div className="container">
             <div className="row g-0">
               <div className="col-md-1 pt-3">
-                <img src={e.author.avatar} id="avatar-house" />
+                <img src={e.avatar} id="avatar-house" />
               </div>
               <div className="col-md-10">
                 <p className="text-muted mt-3">
                   <small>{e.date}</small>
                 </p>
-                <h5 className="mt-1">{e.author.name}</h5>
+                <h5 className="mt-1">{e.author}</h5>
                 <p>{e.description}</p>
               </div>
               <div className="col-md-1 text-end mt-2">

@@ -7,7 +7,7 @@ export default function SignUp() {
     let loginIsSuccessed = false
     let loginInfo = axios.post('http://localhost:4000/signup', {
       name: e.target.name.value,
-      picture: e.target.picture.value,
+      avatar: e.target.picture.value,
       email: e.target.email.value,
       password: e.target.email.value,
     })

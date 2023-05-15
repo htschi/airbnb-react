@@ -14,7 +14,6 @@ export default function House() {
 
   async function getHouse() {
     let response = await axios.get(`http://localhost:4000/houses/${id}`)
-    console.log(response.data.photos[0])
     setHouse(response.data)
   }
 
@@ -24,7 +23,6 @@ export default function House() {
 
   useEffect(() => {
     if (house.photos) {
-      console.log(house.photos[0])
       setSelectedPhoto(house.photos[0])
     }
   }, [house])
