@@ -1,43 +1,21 @@
 import { Link } from 'react-router-dom'
-export default function Listings() {
-  let houses = [
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      title: 'Luxury Villa in Chaweng',
-      price: 150,
-      location: 'Chaweng',
-      rooms: 2,
-      reviews: 3,
-      score: 1,
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
-    },
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      title: 'Luxury Villa in Phangan',
-      price: 150,
-      location: 'Koh Phangan',
-      rooms: 3,
-      reviews: 3,
-      score: 1,
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
-    },
-    {
-      image:
-        'https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png',
-      title: 'Luxury Villa in Samui',
-      price: 150,
-      location: 'Samui',
-      rooms: 4,
-      reviews: 3,
-      score: 1,
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a  little bit longer.',
-    },
-  ]
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
+export default function Listings({ user }) {
+  const [houses, setHousesList] = useState([])
+
+  // get the filtered my houses list back
+  async function generateHousesList() {
+    let myhouses = await axios.get(`http://localhost:4000/houses/myhouses`)
+    console.log(myhouses.data)
+    setHousesList(myhouses.data)
+  }
+
+  useEffect(() => {
+    generateHousesList()
+  }, [])
+
   return (
     <div className="col-7">
       <div className="pt-2">
@@ -58,7 +36,7 @@ export default function Listings() {
           >
             <div className="row g-0">
               <div className="col-md-4">
-                <img src={e.image} className="img-fluid rounded-start" />
+                <img src={e.photos[0]} className="img-fluid rounded-start" />
               </div>
               <div className="col-md-8">
                 <div className="card-body">

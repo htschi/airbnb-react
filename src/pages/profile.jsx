@@ -13,9 +13,12 @@ export default function Profile() {
 
   async function setProfileInfo(e) {
     e.preventDefault()
-    setName(e.target.name.value)
-    setEmail(e.target.email.value)
-    setAvatar(e.target.avatar.value)
+    let updatedUser = await axios.patch(`http://localhost:4000/profile/${id}`, {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      avatar: e.target.avatar.value,
+    })
+    setId(updatedUser)
   }
 
   async function getUserId() {
@@ -76,7 +79,7 @@ export default function Profile() {
                     type="text"
                     className="form-control"
                     name="avatar"
-                    defaultValue={avatar}
+                    defaultValue={user.avatar}
                   />
                   <div className="pt-2">
                     <button className="btn btn-success">Save Changes</button>

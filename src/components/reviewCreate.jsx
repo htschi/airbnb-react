@@ -19,9 +19,15 @@ export default function ReviewCreate() {
     setReviews([...reviews, newReview.data]) // Spread-Operator: take the arr of reviews and add newReview to it
   }
 
+  // get all the Reviews belonging to a House
+  async function getAllHouseReview() {
+    let houseReviews = await axios.get(`http://localhost:4000/reviews/${id}`)
+    setReviews(houseReviews.data)
+  }
+
   useEffect(() => {
-    console.log(reviews)
-  }, [reviews])
+    getAllHouseReview()
+  }, [])
 
   return (
     <div>

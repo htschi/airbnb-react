@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
@@ -14,6 +14,16 @@ export default function Booking() {
     setBooking(true)
     return response
   }
+
+  async function getHouseId() {
+    let houseId = await axios.get(`http://localhost:4000/bookings/${id}`)
+    houseId.data ? setBooking(true) : null
+  }
+
+  useEffect(() => {
+    getHouseId()
+  }, [])
+
   return (
     <div>
       {/* Request Booking */}
